@@ -1,0 +1,10 @@
+*.o
+pluto
+grid.out
+sysconf.out
+*.log
+data.*
+dbl.out
+flt.out
+vtk.out
+restart.out
