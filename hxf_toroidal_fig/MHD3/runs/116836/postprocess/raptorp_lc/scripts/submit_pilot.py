@@ -19,14 +19,15 @@ def main() -> None:
     parser.add_argument("--label", required=True)
     parser.add_argument("--max-concurrent", type=int, default=2)
     args = parser.parse_args()
-    cases = json.loads(args.cases.read_text(encoding="ascii"))
+    cases_path = args.cases.resolve()
+    cases = json.loads(cases_path.read_text(encoding="ascii"))
     if not cases:
         raise SystemExit("cannot submit an empty case list")
     case_file = ROOT / "pilot" / f"{args.label}_case_ids.txt"
     case_file.write_text("".join(f"{case['case_id']}\n" for case in cases), encoding="ascii")
     command = [
         "sbatch", f"--array=0-{len(cases) - 1}%{args.max_concurrent}",
-        f"--export=ALL,CASE_FILE={args.cases},CASE_IDS_FILE={case_file}",
+        f"--export=ALL,CASE_FILE={cases_path},CASE_IDS_FILE={case_file}",
         str(ROOT / "pilot" / "run_pilot.slurm"),
     ]
     output = subprocess.check_output(command, text=True).strip()
@@ -39,7 +40,7 @@ def main() -> None:
         "job_id": job_id,
         "array_size": len(cases),
         "max_concurrent": args.max_concurrent,
-        "case_file": str(args.cases),
+        "case_file": str(cases_path),
         "case_ids_file": str(case_file),
         "sbatch_command": command,
         "sbatch_output": output,
