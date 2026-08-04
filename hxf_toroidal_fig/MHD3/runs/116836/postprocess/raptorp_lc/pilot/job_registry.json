@@ -1,0 +1,100 @@
+{
+  "jobs": [
+    {
+      "array_size": 1,
+      "case_file": "MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_smoke_cases.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/smoke_case_ids.txt",
+      "job_id": "116838",
+      "label": "smoke",
+      "max_concurrent": 1,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-0%1",
+        "--export=ALL,CASE_FILE=MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_smoke_cases.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/smoke_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116838",
+      "submitted_utc": "2026-08-04T10:21:40.371723+00:00"
+    },
+    {
+      "array_size": 11,
+      "case_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_phase1_cases.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/phase1_mask_fov_case_ids.txt",
+      "job_id": "116839",
+      "label": "phase1_mask_fov",
+      "max_concurrent": 2,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-10%2",
+        "--export=ALL,CASE_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_phase1_cases.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/phase1_mask_fov_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116839",
+      "submitted_utc": "2026-08-04T10:24:13.489104+00:00"
+    },
+    {
+      "array_size": 6,
+      "case_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_resolution_cases.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/resolution_case_ids.txt",
+      "job_id": "116850",
+      "label": "resolution",
+      "max_concurrent": 2,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-5%2",
+        "--export=ALL,CASE_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_resolution_cases.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/resolution_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116850",
+      "submitted_utc": "2026-08-04T12:20:08.723166+00:00"
+    },
+    {
+      "array_size": 4,
+      "case_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_validation_cases.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/validation_case_ids.txt",
+      "job_id": "116856",
+      "label": "validation",
+      "max_concurrent": 1,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-3%1",
+        "--export=ALL,CASE_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_validation_cases.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/validation_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116856",
+      "submitted_utc": "2026-08-04T13:56:11.425603+00:00"
+    },
+    {
+      "array_size": 1,
+      "case_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_recovery_interrupt_case.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/recovery_interrupt_case_ids.txt",
+      "job_id": "116860",
+      "label": "recovery_interrupt",
+      "max_concurrent": 1,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-0%1",
+        "--export=ALL,CASE_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_recovery_interrupt_case.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/recovery_interrupt_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116860",
+      "submitted_utc": "2026-08-04T13:59:10.986475+00:00"
+    },
+    {
+      "array_size": 1,
+      "case_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_recovery_interrupt_case.json",
+      "case_ids_file": "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/recovery_retry_case_ids.txt",
+      "job_id": "116861",
+      "label": "recovery_retry",
+      "max_concurrent": 1,
+      "sbatch_command": [
+        "sbatch",
+        "--array=0-0%1",
+        "--export=ALL,CASE_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/config/pilot_recovery_interrupt_case.json,CASE_IDS_FILE=/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/recovery_retry_case_ids.txt",
+        "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/run_pilot.slurm"
+      ],
+      "sbatch_output": "Submitted batch job 116861",
+      "submitted_utc": "2026-08-04T14:00:03.127405+00:00"
+    }
+  ]
+}

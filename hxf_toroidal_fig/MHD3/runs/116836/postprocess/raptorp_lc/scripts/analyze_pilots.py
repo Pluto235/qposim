@@ -81,7 +81,7 @@ def fov_analysis(cases_path: Path) -> None:
     write_json("fov_convergence.json", output)
     write_json("fov_selection.json", selection)
     with (ROOT / "pilot" / "analysis" / "fov_convergence.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(output[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(output[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(output)
     if not choices:
@@ -95,6 +95,13 @@ def resolution_analysis(cases_path: Path) -> None:
     selected_fov = tuple(selection["selected_fov"])
     cases = json.loads(cases_path.read_text(encoding="ascii"))
     by_key = {(tuple(case["resolution"]), case["time"]): case for case in cases}
+    # Reuse the selected-FOV 320 x 512 cases from the completed FOV matrix.
+    # Keeping these out of the new array avoids three duplicate pilot runs.
+    phase1_cases = json.loads((ROOT / "config" / "pilot_phase1_cases.json").read_text(encoding="ascii"))
+    for case in phase1_cases:
+        if ("fov" in case["roles"] and tuple(case["fov"]) == selected_fov and
+                tuple(case["resolution"]) == (320, 512)):
+            by_key[((320, 512), case["time"])] = case
     output = []
     passes_320 = True
     for resolution in ((160, 256), (320, 512), (480, 768)):
@@ -112,7 +119,7 @@ def resolution_analysis(cases_path: Path) -> None:
     write_json("resolution_convergence.json", output)
     write_json("resolution_selection.json", selection_out)
     with (ROOT / "pilot" / "analysis" / "resolution_convergence.csv").open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(output[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(output[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(output)
 

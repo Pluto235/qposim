@@ -1,0 +1,18 @@
+{
+  "gate_passed": true,
+  "passes": {
+    "10.0x16.0": true,
+    "12.0x18.0": true,
+    "6.0x18.0": false
+  },
+  "selected_fov": [
+    10.0,
+    16.0
+  ],
+  "thresholds": {
+    "absolute_mL": 0.003,
+    "evpa_deg": 3.0,
+    "qu_over_I": 0.003,
+    "relative_I": 0.02
+  }
+}

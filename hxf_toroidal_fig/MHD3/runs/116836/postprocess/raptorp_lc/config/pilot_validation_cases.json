@@ -1,0 +1,46 @@
+[
+  {
+    "case_id": "validation_equivalence_spec_t0400_2x4_32x64",
+    "fov": [2.0, 4.0],
+    "resolution": [32, 64],
+    "roles": ["image-spec-equivalence"],
+    "snapshot_index": 130,
+    "target": "RAPTOR_LC4_SPEC",
+    "time": 400,
+    "tracer_mask": "off",
+    "volume_mask": "kink-only"
+  },
+  {
+    "case_id": "validation_deterministic_a_t0400_2x4_32x64",
+    "fov": [2.0, 4.0],
+    "resolution": [32, 64],
+    "roles": ["deterministic"],
+    "snapshot_index": 130,
+    "target": "RAPTOR_LC4_SPEC",
+    "time": 400,
+    "tracer_mask": "off",
+    "volume_mask": "kink-only"
+  },
+  {
+    "case_id": "validation_deterministic_b_t0400_2x4_32x64",
+    "fov": [2.0, 4.0],
+    "resolution": [32, 64],
+    "roles": ["deterministic"],
+    "snapshot_index": 130,
+    "target": "RAPTOR_LC4_SPEC",
+    "time": 400,
+    "tracer_mask": "off",
+    "volume_mask": "kink-only"
+  },
+  {
+    "case_id": "validation_recovery_t0400_2x4_32x64",
+    "fov": [2.0, 4.0],
+    "resolution": [32, 64],
+    "roles": ["interrupt-recovery"],
+    "snapshot_index": 130,
+    "target": "RAPTOR_LC4_SPEC",
+    "time": 400,
+    "tracer_mask": "off",
+    "volume_mask": "kink-only"
+  }
+]

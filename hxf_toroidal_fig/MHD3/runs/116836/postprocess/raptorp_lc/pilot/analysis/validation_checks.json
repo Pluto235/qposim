@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "left": "smoke_kink_t0400_2x4_32x64",
+      "maximum_relative_difference": 0.0,
+      "passed": true,
+      "right": "validation_equivalence_spec_t0400_2x4_32x64"
+    },
+    {
+      "left": "validation_deterministic_a_t0400_2x4_32x64",
+      "maximum_relative_difference": 0.0,
+      "passed": true,
+      "right": "validation_deterministic_b_t0400_2x4_32x64"
+    }
+  ],
+  "passed": true,
+  "recovery_failed_attempts": [
+    "/mnt/mydisk/qposim/hxf_toroidal_fig/MHD3/runs/116836/postprocess/raptorp_lc/pilot/failed/validation_recovery_interrupt_t0400_10x16_320x512_20260804T135943Z"
+  ]
+}

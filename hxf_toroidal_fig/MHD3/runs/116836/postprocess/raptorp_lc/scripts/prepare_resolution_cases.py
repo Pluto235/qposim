@@ -16,7 +16,10 @@ def main() -> None:
         raise SystemExit("FOV convergence did not pass")
     fov = selection["selected_fov"]
     cases = []
-    for resolution in ((160, 256), (320, 512), (480, 768)):
+    # The selected-FOV 320 x 512 cases were already completed as the FOV
+    # matrix.  Only submit the two new resolutions, then reuse those records
+    # in analyze_pilots.py.
+    for resolution in ((160, 256), (480, 768)):
         for time, snapshot_index in ((400, 130), (600, 330), (800, 530)):
             width, height = resolution
             cases.append({

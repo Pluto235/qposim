@@ -1,0 +1,35 @@
+{
+  "jobs": [
+    {
+      "job_id": "116838",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": "slurm_load_jobs error: Invalid job id specified\n"
+    },
+    {
+      "job_id": "116839",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": "slurm_load_jobs error: Invalid job id specified\n"
+    },
+    {
+      "job_id": "116850",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": "slurm_load_jobs error: Invalid job id specified\n"
+    },
+    {
+      "job_id": "116856",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": "slurm_load_jobs error: Invalid job id specified\n"
+    },
+    {
+      "job_id": "116860",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": "slurm_load_jobs error: Invalid job id specified\n"
+    },
+    {
+      "job_id": "116861",
+      "sacct": "Slurm accounting storage is disabled\n",
+      "squeue": ""
+    }
+  ],
+  "observed_utc": "2026-08-04T14:20:38.534865+00:00"
+}

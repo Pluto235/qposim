@@ -1,0 +1,13 @@
+[
+  {
+    "case_id": "validation_recovery_interrupt_t0400_10x16_320x512",
+    "fov": [10.0, 16.0],
+    "resolution": [320, 512],
+    "roles": ["interrupt-recovery"],
+    "snapshot_index": 130,
+    "target": "RAPTOR_LC4_IMAGE",
+    "time": 400,
+    "tracer_mask": "off",
+    "volume_mask": "kink-only"
+  }
+]
