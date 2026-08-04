@@ -1,0 +1,165 @@
+diff -ruN '--exclude=.git' '--exclude=build' '--exclude=bin' '--exclude=RAPTOR' MHD3/runs/116705/postprocess/raptorp_t400/source/definitions.h MHD3/runs/116836/postprocess/raptorp_lc/source/definitions.h
+--- MHD3/runs/116705/postprocess/raptorp_t400/source/definitions.h	2026-07-29 10:45:44.653491376 +0800
++++ MHD3/runs/116836/postprocess/raptorp_lc/source/definitions.h	2026-08-04 18:13:35.276219351 +0800
+@@ -30,18 +30,26 @@
+ #define NDIM 4
+ #define NPRIM 8
+ 
+-#define IMGFILE (1)
++#ifndef RAPTOR_IMAGE_OUTPUT
++#define RAPTOR_IMAGE_OUTPUT 1
++#endif
++
++#define IMGFILE (RAPTOR_IMAGE_OUTPUT)
+ #define SPECFILE (1)
+ #define UNIF (0)
+ #define RAD_TRANS (1)
+ #define POL (1)
+ 
+-#define num_frequencies 1
++#ifndef RAPTOR_NUM_FREQUENCIES
++#define RAPTOR_NUM_FREQUENCIES 4
++#endif
++
++#define num_frequencies RAPTOR_NUM_FREQUENCIES
+ 
+ #define FREQFILE (0)
+ #define FREQLOG (1)
+ 
+-#define FREQS (FREQLOG)
++#define FREQS (FREQFILE)
+ 
+ #define EMISUSER (0)
+ 
+diff -ruN '--exclude=.git' '--exclude=build' '--exclude=bin' '--exclude=RAPTOR' MHD3/runs/116705/postprocess/raptorp_t400/source/makefile MHD3/runs/116836/postprocess/raptorp_lc/source/makefile
+--- MHD3/runs/116705/postprocess/raptorp_t400/source/makefile	2026-07-29 10:44:22.384977868 +0800
++++ MHD3/runs/116836/postprocess/raptorp_lc/source/makefile	2026-08-04 18:13:35.276219351 +0800
+@@ -5,25 +5,46 @@
+ VPATH=./src:
+ CPATH=./src:
+ 
+-OBJDIR=build
++TARGET ?= RAPTOR
++RAPTOR_NUM_FREQUENCIES ?= 4
++RAPTOR_IMAGE_OUTPUT ?= 1
++
++OBJDIR=build/$(TARGET)
++BINDIR=bin
++BIN=$(BINDIR)/$(TARGET)
+ 
+-TARGET=RAPTOR
++CFLAGS += -DRAPTOR_NUM_FREQUENCIES=$(RAPTOR_NUM_FREQUENCIES) -DRAPTOR_IMAGE_OUTPUT=$(RAPTOR_IMAGE_OUTPUT)
+ 
+ SOURCES=main.c core.c io.c GRmath.c gr_integrator.c rte_integrator.c pol_rte_integrator.c metric.c pol_emission.c tetrad.c model.c constants.c camera.c pluto.c
+ OBJECTS := $(patsubst %.c,$(OBJDIR)/%.o,$(SOURCES))
+ 
+-all: create_directories $(SOURCES) $(TARGET)
++all: build
+ 
+-$(TARGET): $(OBJECTS)
++build: create_directories $(BIN)
++
++$(BIN): $(OBJECTS)
+ 	$(CC) $(LDFLAGS) $(OBJECTS) -o $@
+ 
+ create_directories:
+-	@test -d $(OBJDIR) || mkdir -v $(OBJDIR)
++	@test -d $(OBJDIR) || mkdir -p $(OBJDIR)
++	@test -d $(BINDIR) || mkdir -p $(BINDIR)
+ 
+ 
+ $(OBJECTS): $(OBJDIR)/%.o: %.c
+ 	$(CC) $(CFLAGS)  -c $^ -o $@
+ 
+ 
++RAPTOR_LC4_IMAGE:
++	$(MAKE) build TARGET=$@ RAPTOR_NUM_FREQUENCIES=4 RAPTOR_IMAGE_OUTPUT=1
++
++RAPTOR_LC4_SPEC:
++	$(MAKE) build TARGET=$@ RAPTOR_NUM_FREQUENCIES=4 RAPTOR_IMAGE_OUTPUT=0
++
++RAPTOR_SED50_IMAGE:
++	$(MAKE) build TARGET=$@ RAPTOR_NUM_FREQUENCIES=50 RAPTOR_IMAGE_OUTPUT=1
++
++RAPTOR_SED50_SPEC:
++	$(MAKE) build TARGET=$@ RAPTOR_NUM_FREQUENCIES=50 RAPTOR_IMAGE_OUTPUT=0
++
+ clean:
+-	rm -rf $(OBJECTS) $(TARGET)
++	rm -rf build bin
+diff -ruN '--exclude=.git' '--exclude=build' '--exclude=bin' '--exclude=RAPTOR' MHD3/runs/116705/postprocess/raptorp_t400/source/model.c MHD3/runs/116836/postprocess/raptorp_lc/source/model.c
+--- MHD3/runs/116705/postprocess/raptorp_t400/source/model.c	2026-07-29 10:45:44.655491340 +0800
++++ MHD3/runs/116836/postprocess/raptorp_lc/source/model.c	2026-08-04 18:14:09.411499356 +0800
+@@ -38,6 +38,9 @@
+ double Ne_unit, Thetae_unit;
+ double T_dyn;//system dynamical time(used to estimate gamma_br)
+ 
++static int kink_volume_mask = 0;
++double pluto_z_coordinate_offset = 0.;
++
+ // FUNCTIONS
+ ////////////
+ 
+@@ -48,6 +51,18 @@
+     fprintf(stderr, "\nStarting read in of PLUTO RMHD data...\n");
+ 
+     const char *tracer_mask = getenv("RAPTORP_TRACER_MASK");
++    const char *volume_mask = getenv("RAPTORP_VOLUME_MASK");
++    if (volume_mask == NULL || strcmp(volume_mask, "whole") == 0) {
++        kink_volume_mask = 0;
++        fprintf(stderr, "Transfer volume: whole domain\n");
++    } else if (strcmp(volume_mask, "kink-only") == 0) {
++        kink_volume_mask = 1;
++        fprintf(stderr, "Transfer volume: strict physical 40 < z/R_j < 60\n");
++    } else {
++        fprintf(stderr, "Unsupported RAPTORP_VOLUME_MASK=%s; expected whole or kink-only\n",
++                volume_mask);
++        exit(2);
++    }
+     if (tracer_mask != NULL && strcmp(tracer_mask, "0") != 0) {
+         fprintf(stderr, "Tracer mask enabled: init_trace_data(file, jump=0)\n");
+         init_trace_data(RMHD_FILE, 0);
+@@ -119,6 +134,7 @@
+ 
+     //perform translation to save imagesize & shift image center
+     devi=(x3r[N3-1]+x3l[0])/2.;
++    pluto_z_coordinate_offset = devi + SHIFT;
+     for(i=0;i<N3;i++){
+         x3l[i]=x3l[i]-devi-SHIFT;
+         x3r[i]=x3r[i]-devi-SHIFT;
+@@ -193,6 +209,15 @@
+         return 0;
+     }//beyond boundary return 0
+ 
++    // X[3] is centered by the PLUTO reader.  Apply the mask in the original
++    // physical coordinate so the open interval is exactly 40 < z/R_j < 60.
++    if (kink_volume_mask &&
++        !(X[3] + pluto_z_coordinate_offset > 40. &&
++          X[3] + pluto_z_coordinate_offset < 60.)) {
++        (*modvar).n_e = 0.;
++        return 0;
++    }
++
+     Xtoijk(X, &i, &j, &k, del);
+     // int ti=i,tj=j,tk=k;
+ 
+diff -ruN '--exclude=.git' '--exclude=build' '--exclude=bin' '--exclude=RAPTOR' MHD3/runs/116705/postprocess/raptorp_t400/source/pluto.c MHD3/runs/116836/postprocess/raptorp_lc/source/pluto.c
+--- MHD3/runs/116705/postprocess/raptorp_t400/source/pluto.c	2026-07-29 10:44:22.384977868 +0800
++++ MHD3/runs/116836/postprocess/raptorp_lc/source/pluto.c	2026-08-04 18:14:09.412499335 +0800
+@@ -22,6 +22,8 @@
+ 
+ #include "pluto.h"
+ 
++extern double pluto_z_coordinate_offset;
++
+ //Symmetric with respect to the plane at z=0
+ void init_axis_data(char *fname){
+     int i,j,k,m,n,success;
+@@ -223,6 +225,7 @@
+ 
+     //perform translation to save imagesize
+     devi=(x3r[N3-1]+x3l[0])/2;
++    pluto_z_coordinate_offset = devi + SHIFT;
+     for(i=0;i<N3;i++){
+         x3l[i]=x3l[i]-devi-SHIFT;
+         x3r[i]=x3r[i]-devi-SHIFT;

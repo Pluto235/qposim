@@ -1,0 +1,13 @@
+[
+  {"case_id": "mask_whole_tracer_off_t0400_10x16_320x512", "time": 400, "snapshot_index": 130, "volume_mask": "whole", "tracer_mask": "off", "fov": [10.0, 16.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["mask"]},
+  {"case_id": "fov_10x16_t0400_320x512", "time": 400, "snapshot_index": 130, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [10.0, 16.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["mask", "fov"]},
+  {"case_id": "mask_kink_tracer_on_t0400_10x16_320x512", "time": 400, "snapshot_index": 130, "volume_mask": "kink-only", "tracer_mask": "on", "fov": [10.0, 16.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["mask"]},
+  {"case_id": "fov_6x18_t0400_320x512", "time": 400, "snapshot_index": 130, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [6.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_6x18_t0600_320x512", "time": 600, "snapshot_index": 330, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [6.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_6x18_t0800_320x512", "time": 800, "snapshot_index": 530, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [6.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_10x16_t0600_320x512", "time": 600, "snapshot_index": 330, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [10.0, 16.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_10x16_t0800_320x512", "time": 800, "snapshot_index": 530, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [10.0, 16.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_12x18_t0400_320x512", "time": 400, "snapshot_index": 130, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [12.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_12x18_t0600_320x512", "time": 600, "snapshot_index": 330, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [12.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]},
+  {"case_id": "fov_12x18_t0800_320x512", "time": 800, "snapshot_index": 530, "volume_mask": "kink-only", "tracer_mask": "off", "fov": [12.0, 18.0], "resolution": [320, 512], "target": "RAPTOR_LC4_IMAGE", "roles": ["fov"]}
+]

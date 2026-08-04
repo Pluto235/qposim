@@ -1,0 +1,22 @@
+{
+  "adopted_reproduction_assumptions": {
+    "azimuth_deg": 0.0,
+    "distance_kpc": 16800.0,
+    "effective_raptor_code_mass_msun": 6500000000.0,
+    "r_high": 5.0,
+    "r_low": 1.0
+  },
+  "frozen_physics": {
+    "electron_distribution": "VAR_KAPPA turbulence PIC prescription",
+    "inclination_deg": 10.0,
+    "physical_paper_mass_msun": 65000000.0,
+    "spacetime": "Minkowski",
+    "time_treatment": "fast-light",
+    "tracer_default": "off",
+    "transfer_volume": "strict open interval 40 < z/R_j < 60"
+  },
+  "unit_contract": {
+    "length_unit": "R_j = 100 R_g",
+    "rj_over_c_seconds": 32023.8
+  }
+}

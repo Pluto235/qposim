@@ -1,0 +1,18 @@
+{
+  "actual_records": 351,
+  "byte_orders": [
+    "little"
+  ],
+  "expected_records": 351,
+  "expected_size_bytes": 3317760000,
+  "failures": [],
+  "file_modes": [
+    "single_file"
+  ],
+  "first_snapshot_index": 30,
+  "last_snapshot_index": 730,
+  "passed": true,
+  "primitive_orders": [
+    "rho vx1 vx2 vx3 Bx1 Bx2 Bx3 prs tr1"
+  ]
+}
