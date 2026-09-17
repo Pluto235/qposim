@@ -1,0 +1,1 @@
+{"gate":"G0","build_id":"20260916_g0g1","model_id":"thermal_maxwell_juttner_v1","source":"postprocess/radiation/kmonty_readonly_audit_20260916/source/kmonty","status":"NOT_RUN","reason":"formal MPI/GSL build unavailable: gsl/gsl_integration.h not found"}
