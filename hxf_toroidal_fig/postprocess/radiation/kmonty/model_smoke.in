@@ -1,0 +1,12 @@
+MBH             (Msun)  6.5e9
+DISTANCE        (kpc)   16.8e3
+M_UNIT          (g)     1.e26
+R_LOW           (-)     1
+R_HIGH          (-)     5
+
+N_SUPER_PHOTON  (-)     100
+SCATTER_CUTOFF  (rg)    4.0
+STEPSIZE        (-)     0.1
+STEPSIZE_MAX    (-)     0.1
+STEPSIZE_MIN    (-)     0.02
+
