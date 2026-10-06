@@ -1,0 +1,14 @@
+MBH				(Msun)	4.075e6
+DISTANCE		(kpc)	16.8e3
+M_UNIT			(g)		1.e18
+R_LOW			(-)		1
+R_HIGH			(-)		5    
+
+N_SUPER_PHOTON  (-)		1e4	
+STOP_RADIUS 	(rg)	1e4	
+STEPSIZE		(-)		0.01
+STEPSIZE_MAX	(-) 	0.02
+STEPSIZE_MIN	(-) 	0.01
+
+TRIM_ZI			(rg) 	0
+TRIM_ZF 		(rg)	1e4

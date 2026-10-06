@@ -6,6 +6,8 @@ Detailed design rationale -> `docs/`. Authoritative history -> `git log`.
 
 ---
 
+- **qposim** · 2026-10-06 21:30 · [uncommitted] Version kmonty stable and kappa sources in separate qposim worktrees; preserve source bytes, freeze baseline tags, and separate experiment directories.
+
 - **qposim** · 2026-09-11  · [uncommitted] Add initial energy-matched κ distribution and finite-torus dust seed contract with source/scatter diagnostics; baseline and κ/dust builds plus standalone tests pass.
 
 - **qposim** · 2026-09-10 17:36 · [uncommitted] Launch isolated PKS exploratory fast-light production after hash-matched seed fixes, 24 transport/interface assertions and three successful pilots; add momentum-selected 0.8–1.6 degree clustered scattering diagnostics and fail-closed checks; submit three Ns=1e7 seeds as Slurm 118308, retain unchanged MHD scaling and flag unconverged pilot GeV weights.
